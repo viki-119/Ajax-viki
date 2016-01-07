@@ -10,7 +10,7 @@
  * 创建XMLHttpRequest对象
  */
 function ajaxFunction(){
-	var xmlHttp=null;
+	var xmlHttp;
 	try{//Firefox,Opera 8.0+,Safari
 		xmlHttp=new XMLHttpRequest();
 	}catch(e){
@@ -28,7 +28,6 @@ function ajaxFunction(){
 window.onload=function(){
 	//<input type="button" name="ok" id="ok" value="test service link" />
 	document.getElementById("ok").onclick=function(){
-		var sex=document.getElementById("hhh").value;
 		/*
 		 * 1.获取XMLHttpRequest对象
 		 */
@@ -50,8 +49,8 @@ window.onload=function(){
 				if(xmlReq.status==200||xmlReq.status==304){
 					//接收服务器端数据
 					var data=xmlReq.responseText;
-					document.getElementById("result").value=data;
-					}
+					alert("data:"+data);
+				}
 			}
 		};
 		
@@ -64,12 +63,20 @@ window.onload=function(){
 		 */
 		//alert(new Date().getTime());//(解决缓存的问题)
 		xmlReq.open("post","../testServlet?timeStamp="+new Date().getTime()+"&a=9",true);
+		/*
+		 * xmlReq.setRequestHeader()
+		 *		如果用post请求服务器发送的数据
+		 * 		需要将"Content-Type"的首部设置为"application/x-www-form-urlencoded"。它会告诉服务器正在发送数据
+		 * 		并且数据已经符合url编码了
+		 * 		该方法必须放在open方法之后
+		 */
 		xmlReq.setRequestHeader("content-Type","application/x-www-form-urlencoded");
+		
 		/*
 		 * 4.发送数据
 		 * 	若选用的是get请求，则不会发送任何数据，给send方法传递null即可
 		 */
-		xmlReq.send("sex="+sex);//如果有数据交互，这里一定要传值
-		/*xmlReq.send("b=45&c=23");*/
+		/*xmlReq.send(null);*/
+		xmlReq.send("b=45&c=23");
 	};
 };
