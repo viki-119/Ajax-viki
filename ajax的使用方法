@@ -1,0 +1,75 @@
+/**
+ *AJAX建立和服务器的连接，接收服务器的请求，处理服务器返回的数据
+ *开发步骤：
+ *		1.创建XMLHttpRequest对象
+ *		2.接收/处理服务器的响应 
+ *		3.打开和服务器的连接
+ *		4.发送数据
+ */
+/**
+ * 创建XMLHttpRequest对象
+ */
+function ajaxFunction(){
+	var xmlHttp=null;
+	try{//Firefox,Opera 8.0+,Safari
+		xmlHttp=new XMLHttpRequest();
+	}catch(e){
+		try{//Internet Explorer
+			xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+		}catch(e){
+			try{
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}catch(e){}
+		}
+	}
+	return xmlHttp;
+}
+//click function
+window.onload=function(){
+	//<input type="button" name="ok" id="ok" value="test service link" />
+	document.getElementById("ok").onclick=function(){
+		var sex=document.getElementById("hhh").value;
+		/*
+		 * 1.获取XMLHttpRequest对象
+		 */
+		var xmlReq=ajaxFunction();
+		/*
+		 * 2.处理服务器的响应
+		 * 	XMLHttpRequest对象中有一个readyState属性
+		 * 			readyState 属性表示Ajax请求的当前状态。它的值用数字代表。
+		 * 				0 代表未初始化。还没有调用open方法
+		 * 				1代表正在加载。open方法已被调用。但send方法没有被调用
+		 * 				2代表已加载完毕。send已被调用。请求已经开始
+		 * 				3代表交互中。服务器正在发送响应
+		 * 				4代表完毕。响应发送完毕。
+		 */
+		xmlReq.onreadystatechange=function(){
+			//
+			if(xmlReq.readyState==4){
+				//通过把这个值和200（一切正常，服务器处理成功）或304（源文件没有被修改）比较
+				if(xmlReq.status==200||xmlReq.status==304){
+					//接收服务器端数据
+					var data=xmlReq.responseText;
+					document.getElementById("result").value=data;
+					}
+			}
+		};
+		
+		/*
+		 * 3.打开和服务器的连接
+		 * open（method，url，asynch）
+		 * 		method 请求方法 get  post
+		 * 		url 请求的路径
+		 * 		asynch：表示请求是否要异步传输，默认值为true(异步)
+		 */
+		//alert(new Date().getTime());//(解决缓存的问题)
+		xmlReq.open("post","../testServlet?timeStamp="+new Date().getTime()+"&a=9",true);
+		xmlReq.setRequestHeader("content-Type","application/x-www-form-urlencoded");
+		/*
+		 * 4.发送数据
+		 * 	若选用的是get请求，则不会发送任何数据，给send方法传递null即可
+		 */
+		xmlReq.send("sex="+sex);//如果有数据交互，这里一定要传值
+		/*xmlReq.send("b=45&c=23");*/
+	};
+};
