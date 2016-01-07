@@ -1,44 +1,44 @@
 //表示一个人
 	var person1={
-			"firstname":"da-wei",
-			"lastname":"zhang",
-			"email":"www@qq.com"
+		"firstname":"da-wei",
+		"lastname":"zhang",
+		"email":"www@qq.com"
 	}
 	alert(person1.firstname);
 	
 	//表示多个人，用数组表示
 	var persons=[{"firstname":"zhang1",
-					"lastname":"xxx1",
-					"email":"ddd@qq.com"
-				 },
-				 {"firstname":"zhang2",
-						"lastname":"xxx2",
-						"email":"ddd@qq.com"
-				 }]
+			"lastname":"xxx1",
+			"email":"ddd@qq.com"
+			 },
+			 {"firstname":"zhang2",
+			"lastname":"xxx2",
+			"email":"ddd@qq.com"
+	 	}]
 	alert(persons[1].lastname);
 //多个数组表示一个需求
 	var person3={
-		"params1":[{"firstname":"zhang1",
-					"lastname":"xxx1",
-					"email":"ddd@qq.com"
-					},
-					{"firstname":"zhang2",
-						"lastname":"xxx1",
-						"email":"ddd@qq.com"
-					}],
-	     "params2":[{"firstname":"zhang1",
-					"lastname":"xxx1",
-					"email":"ddd@qq.com"
-					},
-					{"firstname":"zhang2",
-					"lastname":"xxx1",
-					"email":"ddd@qq.com"
-					}]
-				}
-		alert(person3.params1[1].email);
-		alert(person3.params2[1].firstname);
+	"params1":[{"firstname":"zhang1",
+			"lastname":"xxx1",
+			"email":"ddd@qq.com"
+			},
+			{"firstname":"zhang2",
+				"lastname":"xxx1",
+				"email":"ddd@qq.com"
+		}],
+	"params2":[{"firstname":"zhang1",
+			"lastname":"xxx1",
+			"email":"ddd@qq.com"
+			},
+			{"firstname":"zhang2",
+			"lastname":"xxx1",
+			"email":"ddd@qq.com"
+		}]
+	}
+	alert(person3.params1[1].email);
+	alert(person3.params2[1].firstname);
 /*
- 姓名：张三丰
+姓名：张三丰
 年龄：33
 电话：{固定电话：2222,移动电话：33333}
 地址：{
@@ -46,15 +46,15 @@
 	公司地址：{地址：马连洼，邮编：3333}
 	}
  */
-		var person4={
-		 			name:"zhang san feng",
-		 			 age:"33",
-		 			tel:{phone:"2222",mobile:"33333"},
-		 			 address:[
-		 			          {homeaddress:"shang dan",code:"44444"},
-		 			          {comaddress:"ma lian wa",code:"3333"}
-		 			          ]
- 					}
-		alert(person4.address[1].code);
+	var person4={
+ 		name:"zhang san feng",
+ 		 age:"33",
+ 		tel:{phone:"2222",mobile:"33333"},
+ 		 address:[
+ 		          {homeaddress:"shang dan",code:"44444"},
+ 		          {comaddress:"ma lian wa",code:"3333"}
+ 		          ]
+ 		}
+	alert(person4.address[1].code);
 	
 /********************************************************************/	
