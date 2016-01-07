@@ -66,7 +66,7 @@ window.onload=function(){
 		/*
 		 * xmlReq.setRequestHeader()
 		 *		如果用post请求服务器发送的数据
-		 * 		需要将"Content-Type"的首部设置为"application/x-www-form-urlencoded"。它会告诉服务器正在发送数据
+		 * 		需要将"content-Type"的首部设置为"application/x-www-form-urlencoded"。它会告诉服务器正在发送数据
 		 * 		并且数据已经符合url编码了
 		 * 		该方法必须放在open方法之后
 		 */
