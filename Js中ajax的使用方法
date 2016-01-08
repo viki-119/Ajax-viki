@@ -80,3 +80,53 @@ window.onload=function(){
 		xmlReq.send("b=45&c=23");
 	};
 };
+/***************************************************************************************************************/
+下面是java代码  testServlet.java
+/***************************************************************************************************************/
+package com.cnn.web;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class TestServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	public void doGet(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out=response.getWriter();
+		
+		System.out.println("request.getMethod()="+request.getMethod());
+		System.out.println("request.getParameter(a)="+request.getParameter("a"));
+		System.out.println("request.getParameter(b)="+request.getParameter("b"));
+		System.out.println("request.getParameter(c)="+request.getParameter("c"));
+		System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		
+		//发送给客户端
+		out.println("Get connection server");
+	}
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out=response.getWriter();
+		
+		String ttt=request.getParameter("sex");//这里request.getParameter("para")一定要与传过来的参数名保持一致
+		if("sex".equals(ttt)){
+			out.println("sex");
+		}
+		System.out.println("request.getMethod()="+request.getMethod());
+		System.out.println("request.getParameter(a)="+request.getParameter("a"));
+		System.out.println("request.getParameter(b)="+request.getParameter("b"));
+		System.out.println("request.getParameter(c)="+request.getParameter("c"));
+		System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		
+		//发送给客户端
+		out.println("post connection server ok");
+	}
+}
+
